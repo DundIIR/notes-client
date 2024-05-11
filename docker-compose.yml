@@ -1,0 +1,35 @@
+services:
+  postgres:
+    image: postgres
+    ports:
+      - 9053:5432
+    environment:
+      POSTGRES_DB: 'myDataBase'
+      POSTGRES_USER: 'noteDB'
+      POSTGRES_PASSWORD: 'noteDB'
+      TZ: Asia/Yekaterinburg
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+
+  pgadmin:
+    image: dpage/pgadmin4
+    environment:
+      - PGADMIN_DEFAULT_EMAIL=asd@asd.com
+      - PGADMIN_DEFAULT_PASSWORD=root
+    ports:
+      - 9052:80
+
+  backend:
+    image: notes-api
+    environment:
+      - ConnectionStrings__default=Host=postgres;Database=myDataBase;Username=noteDB;Password=noteDB;
+      - ASPNETCORE_ENVIRONMENT=Development
+    ports:
+      - 9051:8080
+
+  frontend:
+    image: notes-client
+    ports:
+      - 9050:5173
+volumes:
+  postgres-data:

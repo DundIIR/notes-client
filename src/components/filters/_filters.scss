@@ -1,0 +1,79 @@
+.filters {
+	height: 100%;
+	background-color: $white;
+
+	border-radius: rem(10);
+	box-shadow: $boxShadow;
+	display: flex;
+	align-items: center;
+	padding: rem(10);
+
+	&__search-input {
+		flex: 1;
+		margin-right: 0.5rem;
+		padding: 0.5rem;
+		border: 1px solid $lightBorder;
+		border-radius: rem(5);
+		font-size: 16px;
+
+		&::placeholder {
+			color: $placeholder;
+		}
+
+		&:focus {
+			border-color: $blue;
+		}
+	}
+
+	&__select {
+		padding: 0.5rem;
+		border: 1px solid $lightBorder;
+		border-radius: 5px;
+		font-size: 16px;
+
+		&:focus {
+			outline: none;
+			border-color: $blue;
+		}
+	}
+
+	&__checkbox {
+		display: none;
+	}
+
+	&__label {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		font-weight: 500; /* Делаем текст жирным */
+		cursor: pointer; /* Делаем курсор указателем */
+		width: 40px;
+		height: 40px;
+		border-radius: 5px;
+		border: 1px solid $lightBorder;
+		background-color: $white;
+		margin-right: 0.5rem;
+		user-select: none;
+	}
+}
+
+.filters__checkbox[type='checkbox']:checked + .filters__label {
+	background-color: $blue;
+	color: $white;
+	border: tr;
+}
+
+.tippy {
+	font-family: $font-main;
+	font-size: 14px;
+	font-weight: 300;
+	color: $text;
+	width: auto;
+	height: auto;
+	padding: 5px;
+	border: 1px solid $lightBorder;
+	border-radius: 5px;
+	margin-bottom: 6px;
+	background-color: $white;
+	box-shadow: $boxShadow;
+}

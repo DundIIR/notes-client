@@ -1,11 +1,13 @@
 import { useEffect, useState } from 'react'
-import UpdateNoteForm from './components/UpdateNoteForm'
-import CreateNoteForm from './components/CreateNoteForm'
-import Filters from './components/Filters'
-import Note from './components/Note'
-import { fetchNotes, createNote, updateNote, deleteNote } from './services/notes'
+import UpdateNoteForm from '../noteForm/UpdateNoteForm'
+import CreateNoteForm from '../noteForm/CreateNoteForm'
+import Filters from '../filters/Filters'
+import ListNotes from '../listNotes/ListNotes'
+import { fetchNotes, createNote, updateNote, deleteNote } from '../../services/notes'
+import '../../style/main.scss'
+import ListGroups from '../listGroups/listGroup'
 
-function App() {
+const App = () => {
 	const [notes, setNotes] = useState([])
 	const [filter, setFilter] = useState({
 		search: '',
@@ -55,8 +57,8 @@ function App() {
 	}
 
 	return (
-		<section className="p-8 flex flex-row justify-start">
-			<div className="max-w-md mx-auto bg-white shadow-md rounded px-8 pt-6 pb-8 border border-gray-300 mr-4">
+		<section className="main">
+			<div className="main__form">
 				{!isEditing ? (
 					<CreateNoteForm onCreate={onCreate} />
 				) : (
@@ -69,22 +71,15 @@ function App() {
 						}}
 					/>
 				)}
+			</div>
+			<div className="main__search">
 				<Filters filter={filter} setFilter={setFilter} />
 			</div>
-			<div className="flex-1 bg-white shadow-md rounded border border-gray-300">
-				<ul className=" divide-gray-300 ">
-					{notes.map(note => (
-						<li className="py-4 px-6 border-b-2" key={note.id}>
-							<Note
-								title={note.title}
-								description={note.description}
-								creationDate={note.creationDate}
-								onDelete={() => onDelete(note.id)}
-								onEdit={() => onEdit(note)}
-							/>
-						</li>
-					))}
-				</ul>
+			<div className="main__group">
+				<ListGroups />
+			</div>
+			<div className="main__notes">
+				<ListNotes notes={notes} onEdit={onEdit} onDelete={onDelete} />
 			</div>
 		</section>
 	)

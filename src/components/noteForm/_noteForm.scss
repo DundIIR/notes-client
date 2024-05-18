@@ -1,0 +1,69 @@
+.form {
+	height: 100%;
+	background-color: $white;
+	border-radius: rem(10); // 10px в относительных единицах
+	box-shadow: $boxShadow;
+	padding: 1.25rem; // 20px в относительных единицах
+
+	&__title {
+		color: $text;
+		margin-bottom: 1rem;
+		font-size: rem(24);
+		font-weight: 700;
+	}
+
+	&__input,
+	&__textarea {
+		width: 100%;
+		margin-bottom: 0.9375rem; // 15px в относительных единицах
+		padding: 0.625rem; // 10px в относительных единицах
+		border: 0.0625rem solid $lightBorder; // 1px в относительных единицах
+		border-radius: 0.3125rem; // 5px в относительных единицах
+		font-size: 1rem; // 16px в относительных единицах
+
+		&:focus {
+			outline: none;
+			border-color: $blue;
+		}
+	}
+
+	&__textarea {
+		display: block;
+		min-height: 9.375rem; // 150px в относительных единицах
+		max-height: 500px;
+		min-width: 410px;
+		max-width: 410px;
+		overflow-y: auto;
+	}
+
+	&__container-button {
+		display: flex;
+		gap: rem(10);
+	}
+
+	&__button {
+		background-color: $blue;
+		color: $white;
+		border: 2px solid transparent;
+		border-radius: 0.3125rem; // 5px в относительных единицах
+		padding: 0.625rem 1.25rem; // 10px 20px в относительных единицах
+		font-size: 1rem; // 16px в относительных единицах
+		font-weight: 500;
+		width: 100%;
+		cursor: pointer;
+
+		&:hover {
+			background-color: darken($blue, 10%);
+		}
+
+		&--cancel {
+			background-color: $lightRed;
+			&:hover {
+				background-color: darken($lightRed, 10%);
+			}
+		}
+		&:focus {
+			border: 2px solid $darkBorder;
+		}
+	}
+}

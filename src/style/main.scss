@@ -1,0 +1,11 @@
+@import './function';
+@import './vars';
+@import './reset';
+@import './base';
+@import url('https://fonts.googleapis.com/css2?family=Manrope:wght@200..800&display=swap');
+
+@import '../components/app/app';
+@import '../components/noteForm/noteForm';
+@import '../components/filters/filters';
+@import '../components/listNotes/listNotes';
+@import '../components/listGroups/listGroups';

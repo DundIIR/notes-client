@@ -20,15 +20,14 @@ services:
       - 9052:80
 
   backend:
-    image: notes-api
+    image: ruzinde/notes-api
     environment:
       - ConnectionStrings__default=Host=postgres;Database=myDataBase;Username=noteDB;Password=noteDB;
-      - ASPNETCORE_ENVIRONMENT=Development
     ports:
       - 9051:8080
 
   frontend:
-    image: notes-client
+    image: ruzinde/notes:latest
     ports:
       - 9050:5173
 volumes:

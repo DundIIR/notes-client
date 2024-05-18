@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react'
+import '../../style/main.scss'
 
 function UpdateNoteForm({ note, onUpdate, onCancelEdit }) {
 	const [updatedNote, setUpdatedNote] = useState({
@@ -14,15 +15,14 @@ function UpdateNoteForm({ note, onUpdate, onCancelEdit }) {
 
 	const onSubmit = e => {
 		e.preventDefault()
-		console.log(note.id, updatedNote)
 		onUpdate(note.id, updatedNote)
 	}
 
 	return (
-		<form onSubmit={onSubmit}>
-			<h3 className="text-xl mb-4 font-bold text-gray-800">Редактирование заметки</h3>
+		<form onSubmit={onSubmit} className="form">
+			<h3 className="form__title">Редактирование заметки</h3>
 			<input
-				className="shadow border rounded w-full py-2 px-3 mb-2 text-gray-700 leading-tight"
+				className="form__input"
 				type="text"
 				name="title"
 				placeholder="Название"
@@ -30,20 +30,17 @@ function UpdateNoteForm({ note, onUpdate, onCancelEdit }) {
 				onChange={e => setUpdatedNote({ ...updatedNote, title: e.target.value })}
 			/>
 			<textarea
-				className="shadow border rounded w-full py-2 px-3 mb-2 text-gray-700 leading-tight"
+				className="form__textarea"
 				name="description"
 				placeholder="Описание"
 				value={updatedNote.description}
 				onChange={e => setUpdatedNote({ ...updatedNote, description: e.target.value })}
 			/>
-			<div className="flex justify-between">
-				<button className="bg-green-500 hover:bg-green-600 text-white font-bold py-2 px-4 rounded" type="submit">
+			<div className="form__container-button">
+				<button className="form__button" type="submit">
 					Сохранить
 				</button>
-				<button
-					className="bg-red-400 hover:bg-red-600 text-white font-bold py-2 px-4 rounded"
-					type="button"
-					onClick={onCancelEdit}>
+				<button className="form__button form__button--cancel" type="button" onClick={onCancelEdit}>
 					Отменить
 				</button>
 			</div>

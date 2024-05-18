@@ -1,0 +1,35 @@
+// Шаблоны
+
+// %tplborder {
+// 	border-bottom: 5px solid red;
+// }
+
+// .header {
+// 	@extend %tplborder;
+// }
+
+.visually-hidden {
+	position: absolute;
+	width: 1px;
+	height: 1px;
+	margin: -1px;
+	padding: 0;
+	border: 0;
+	clip: rect(0 0 0 0);
+	overflow: hidden;
+}
+
+html,
+body,
+#root {
+	height: 100%;
+	margin: 0;
+}
+
+body {
+	overflow: hidden;
+	font-family: $font-main;
+	font-size: 16px;
+	color: $text;
+	background-color: $backgroundMain;
+}
